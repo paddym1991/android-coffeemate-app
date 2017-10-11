@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import ie.cm.R;
+import ie.cm.models.Coffee;
 
 public class Home extends Base {
 
@@ -39,26 +40,12 @@ public class Home extends Base {
                         }).show();
             }
         });
+
     }
 
     public void add(View v)
     {
         goToActivity(this,Add.class,null);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.menu_help) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -69,5 +56,11 @@ public class Home extends Base {
             recentList.setText(coffeeList.toString());
         else
             recentList.setText(getString(R.string.recentlyViewedListEmptyMessage));
+    }
+
+    public void setupCoffees(){
+        coffeeList.add(new Coffee("Standard Black", "Some Shop",2.5,1.99,false));
+        coffeeList.add(new Coffee("Regular Joe", "Joe's Place",3.5,2.99,true));
+        coffeeList.add(new Coffee("Espresso", "Ardkeen Stores",4.5,1.49,true));
     }
 }
