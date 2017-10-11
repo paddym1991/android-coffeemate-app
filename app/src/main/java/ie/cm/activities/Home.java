@@ -40,7 +40,7 @@ public class Home extends Base {
                         }).show();
             }
         });
-
+        setupCoffees();     //make use of the setupCoffees helper method
     }
 
     public void add(View v)
