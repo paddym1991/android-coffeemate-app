@@ -16,8 +16,14 @@ public class CoffeeListAdapter extends ArrayAdapter<Coffee>
   private OnClickListener deleteListener;
   public List<Coffee> coffeeList;
 
+  /**
+   * Our constructor, associating our data (our list of Coffees) with the view we want to bing to (coffeerow)
+   * @param context
+   * @param deleteListener
+   * @param coffeeList
+   */
   public CoffeeListAdapter(Context context, OnClickListener deleteListener, List<Coffee> coffeeList)
-  {
+  {                                       //a reference for deleting a coffee
     super(context, R.layout.coffeerow, coffeeList);
 
     this.context = context;
@@ -25,10 +31,18 @@ public class CoffeeListAdapter extends ArrayAdapter<Coffee>
     this.coffeeList = coffeeList;
   }
 
+  /**
+   * Automatically called for every object that exists in the underlying data (ie coffeeList)
+   * @param position
+   * @param convertView
+   * @param parent
+   * @return CoffeeItem reference - a new 'Row' to add to the Parent ViewGroup (theListView)
+   */
   @Override
   public View getView(int position, View convertView, ViewGroup parent)
   {
-    return null;
+    CoffeeItem item = new CoffeeItem(context, parent, deleteListener, coffeeList.get(position));
+    return item.view;
   }
 
   @Override

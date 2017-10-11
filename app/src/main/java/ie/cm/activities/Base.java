@@ -17,11 +17,11 @@ import android.widget.Toast;
 
 public class Base extends AppCompatActivity {
 
-	protected static ArrayList<Coffee> 	coffeeList = new ArrayList<Coffee>();
-	protected Bundle            		activityInfo; // Used for persistence (of sorts)
-	protected CoffeeFragment    		coffeeFragment; // How we'll 'share' our List of Coffees between Activities
+	public static ArrayList<Coffee> 	coffeeList = new ArrayList<Coffee>();
+	public Bundle            		activityInfo; // Used for persistence (of sorts)
+	public CoffeeFragment    		coffeeFragment; // How we'll 'share' our List of Coffees between Activities
 
-	protected void goToActivity(Activity current,
+	public void goToActivity(Activity current,
 								Class<? extends Activity> activityClass,
 								Bundle bundle) {
 		Intent newActivity = new Intent(current, activityClass);
