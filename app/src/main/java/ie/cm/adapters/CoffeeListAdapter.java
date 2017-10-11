@@ -48,7 +48,7 @@ public class CoffeeListAdapter extends ArrayAdapter<Coffee>
   @Override
   public int getCount()
   {
-    return 0;
+    return coffeeList.size();
   }
   
   @Override

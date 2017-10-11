@@ -13,9 +13,9 @@ import android.widget.ListView;
 
 public class CoffeeFragment  extends ListFragment implements  OnClickListener
 { 
-  protected         Base                activity;
-  protected static  CoffeeListAdapter 	listAdapter;
-  protected         ListView 			listView;
+  public         Base                activity;
+  public static  CoffeeListAdapter 	listAdapter;
+  public         ListView 			listView;
 
   public CoffeeFragment() {
     // Required empty public constructor
@@ -33,11 +33,16 @@ public class CoffeeFragment  extends ListFragment implements  OnClickListener
     this.activity = (Base) context;
   }
 
+  /**
+   * Create an instance of the custom adapter and associate it with the Fragment
+   * @param savedInstanceState
+   */
   @Override
   public void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
-
+    listAdapter = new CoffeeListAdapter(getActivity(), this, Base.coffeeList);      //replaced 'activity' with the method 'getActivity()' in parameters because app didn't recognize 'activity'
+    setListAdapter (listAdapter);
   }
      
   @Override

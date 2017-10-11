@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import ie.cm.R;
+import ie.cm.fragments.CoffeeFragment;
 import ie.cm.models.Coffee;
 
 public class Home extends Base {
@@ -52,8 +53,11 @@ public class Home extends Base {
     protected void onResume() {
         super.onResume();
 
+        coffeeFragment = CoffeeFragment.newInstance(); //get a new Fragment instance
+        getFragmentManager().beginTransaction().replace(R.id.fragment_layout, coffeeFragment).commit(); // add it to the current activity
+
         if(!coffeeList.isEmpty())
-            recentList.setText(coffeeList.toString());
+            recentList.setText("");
         else
             recentList.setText(getString(R.string.recentlyViewedListEmptyMessage));
     }

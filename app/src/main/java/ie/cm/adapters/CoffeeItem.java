@@ -41,7 +41,7 @@ public class CoffeeItem {
 		((TextView) view.findViewById(R.id.rowCoffeeName)).setText(coffee.name);
 		((TextView) view.findViewById(R.id.rowCoffeeShop)).setText(coffee.shop);
 		((TextView) view.findViewById(R.id.rowRating)).setText(coffee.rating + " *");
-		((TextView) view.findViewById(R.id.rowPrice)).setText(coffee.price + new DecimalFormat("0.00").format(coffee.price));
+		((TextView) view.findViewById(R.id.rowPrice)).setText("€" + new DecimalFormat("0.00").format(coffee.price));
 
 		ImageView imgIcon = (ImageView) view.findViewById(R.id.RowImage);
 		//set the favourite on/off depending on the coffees favourite value
