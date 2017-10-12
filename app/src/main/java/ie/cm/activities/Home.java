@@ -41,7 +41,6 @@ public class Home extends Base {
                         }).show();
             }
         });
-        setupCoffees();     //make use of the setupCoffees helper method
     }
 
     public void add(View v)
@@ -60,11 +59,5 @@ public class Home extends Base {
             recentList.setText("");
         else
             recentList.setText(getString(R.string.recentlyViewedListEmptyMessage));
-    }
-
-    public void setupCoffees(){
-        coffeeList.add(new Coffee("Standard Black", "Some Shop",2.5,1.99,false));
-        coffeeList.add(new Coffee("Regular Joe", "Joe's Place",3.5,2.99,true));
-        coffeeList.add(new Coffee("Espresso", "Ardkeen Stores",4.5,1.49,true));
     }
 }
