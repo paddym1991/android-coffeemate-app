@@ -19,6 +19,7 @@
     <string name="addACoffeeLbl">Coffee Check In</string>
     <string name="addCoffeeBtnLbl">Add Coffee</string>
     <string name="updateCoffeeBtnLbl">Update Coffee</string>
+    <string name="deleteCoffeesLbl">Delete Coffees</string>
     <string name="saveCoffeeBtn">Save Coffee</string>
     <string name="recentlyViewedLbl">Recently Added Coffee\'s</string>
     <string name="coffeeNameLbl">Name :</string>

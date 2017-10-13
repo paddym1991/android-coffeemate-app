@@ -5,7 +5,9 @@
     style="@style/appLayoutTheme"
     android:layout_width="fill_parent"
     android:layout_height="46dp"
-    android:padding="8dp" >
+    android:padding="8dp"
+    android:background="@drawable/background_activated">        <!--add the resource 'background_activated.xml' just created as the background color property for the whole layout-->
+
 
     <ImageView
         android:id="@+id/RowImage"
