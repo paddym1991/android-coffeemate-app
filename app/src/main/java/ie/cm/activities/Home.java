@@ -45,7 +45,7 @@ public class Home extends Base {
 
     public void add(View v)
     {
-        goToActivity(this,Add.class,null);
+        goToActivity(this, Add.class, null);
     }
 
     @Override

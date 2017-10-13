@@ -1,6 +1,7 @@
 package ie.cm.fragments;
 
 import ie.cm.activities.Base;
+import ie.cm.activities.Edit;
 import ie.cm.adapters.CoffeeListAdapter;
 import ie.cm.models.Coffee;
 
@@ -9,6 +10,7 @@ import android.app.AlertDialog;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -63,6 +65,17 @@ public class CoffeeFragment  extends ListFragment implements  OnClickListener
     }
   }
 
+  @Override
+  public void onListItemClick(ListView l, View v, int position, long id)
+  {
+    Bundle activityInfo = new Bundle(); // Creates a new Bundle object
+    activityInfo.putInt("coffeeID", v.getId());
+
+    Intent goEdit = new Intent(getActivity(), Edit.class); // Creates a new Intent
+    goEdit.putExtras(activityInfo);
+    getActivity().startActivity(goEdit); // Launch the Intent
+  }
+
   public void onCoffeeDelete(final Coffee coffee)
   {
     String stringName = coffee.name;
@@ -88,6 +101,7 @@ public class CoffeeFragment  extends ListFragment implements  OnClickListener
     AlertDialog alert = builder.create();
     alert.show();
   }
+
 }
 
   

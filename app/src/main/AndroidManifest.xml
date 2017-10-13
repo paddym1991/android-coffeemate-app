@@ -23,6 +23,11 @@
             android:label="@string/addACoffeeLbl"
             android:theme="@style/AppTheme.ActionBar" >
         </activity>
+        <activity
+            android:name="ie.cm.activities.Edit"
+            android:label="@string/updateCoffeeBtnLbl"
+            android:theme="@style/AppTheme.ActionBar" >
+        </activity>
         <activity android:name=".activities.Help" >
         </activity>
     </application>
