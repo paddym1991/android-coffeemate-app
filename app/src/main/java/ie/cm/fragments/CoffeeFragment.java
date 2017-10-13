@@ -1,5 +1,6 @@
 package ie.cm.fragments;
 
+import ie.cm.R;
 import ie.cm.activities.Base;
 import ie.cm.activities.Edit;
 import ie.cm.adapters.CoffeeListAdapter;
@@ -12,11 +13,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AbsListView;
 import android.widget.ListView;
-
-public class CoffeeFragment  extends ListFragment implements  OnClickListener
+                                                                              //make sure the class implements the MultiChoiceModeListener interface
+public class CoffeeFragment  extends ListFragment implements  OnClickListener, AbsListView.MultiChoiceModeListener
 { 
   public         Base                activity;
   public static  CoffeeListAdapter 	listAdapter;
@@ -101,6 +106,58 @@ public class CoffeeFragment  extends ListFragment implements  OnClickListener
     AlertDialog alert = builder.create();
     alert.show();
   }
+
+
+  /* ************ MultiChoiceModeListener methods (begin) *********** */
+  @Override
+  public boolean onCreateActionMode(ActionMode actionMode, Menu menu)
+  {
+    MenuInflater inflater = actionMode.getMenuInflater();
+    inflater.inflate(R.menu.delete_list_context, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onPrepareActionMode(ActionMode actionMode, Menu menu)
+  {
+    return false;
+  }
+
+  @Override
+  public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem)
+  {
+    switch (menuItem.getItemId())
+    {
+      case R.id.menu_item_delete_coffee:
+        deleteCoffees(actionMode);
+        return true;
+      default:
+        return false;
+    }
+
+  }
+
+  private void deleteCoffees(ActionMode actionMode)
+  {
+    for (int i = listAdapter.getCount() - 1; i >= 0; i--)
+    {
+      if (listView.isItemChecked(i))
+      {
+        Base.coffeeList.remove(listAdapter.getItem(i));
+      }
+    }
+    actionMode.finish();
+    listAdapter.notifyDataSetChanged();
+  }
+
+  @Override
+  public void onDestroyActionMode(ActionMode actionMode)
+  {}
+
+  @Override
+  public void onItemCheckedStateChanged(ActionMode actionMode, int position, long id, boolean checked)
+  {}
+  /* ************ MultiChoiceModeListener methods (end) *********** */
 
 }
 
