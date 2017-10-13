@@ -57,7 +57,16 @@ public class Home extends Base {
 
         if(!coffeeList.isEmpty())
             recentList.setText("");
-        else
+        else {
+            setupCoffees();
             recentList.setText(getString(R.string.recentlyViewedListEmptyMessage));
+        }
+    }
+
+
+    public void setupCoffees(){
+        coffeeList.add(new Coffee("Standard Black", "Some Shop",2.5,1.99,false));
+        coffeeList.add(new Coffee("Regular Joe", "Joe's Place",3.5,2.99,true));
+        coffeeList.add(new Coffee("Espresso", "Ardkeen Stores",4.5,1.49,true));
     }
 }

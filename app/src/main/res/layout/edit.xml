@@ -37,10 +37,10 @@
                     android:id="@+id/favouriteImageView"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/ic_favourite_off"
+                    android:layout_column="18"
                     android:onClick="toggle"
-                    tools:ignore="ContentDescription"
-                    android:layout_column="18" />
+                    android:src="@drawable/ic_favourite_off"
+                    tools:ignore="ContentDescription" />
 
             </TableRow>
         </TableLayout>
@@ -191,7 +191,8 @@
                 android:layout_above="@+id/LinearLayout01"
                 android:layout_centerHorizontal="true"
                 android:drawableTop="@drawable/ic_save_todo"
-                android:text="@string/updateCoffeeBtnLbl" />
+                android:text="@string/updateCoffeeBtnLbl"
+                android:onClick="update" />
         </RelativeLayout>
     </RelativeLayout>
 

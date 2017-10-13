@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 
 public class Edit extends Base {
@@ -26,7 +27,25 @@ public class Edit extends Base {
 		activityInfo = getIntent().getExtras();
 		aCoffee = getCoffeeObject(activityInfo.getInt("coffeeID"));
 
+		//'bind' the specific coffee data to the individual views/fields on the Edit Screen
+		((TextView)findViewById(R.id.coffeeNameTextView)).setText(aCoffee.name);
+		((TextView)findViewById(R.id.coffeeShopTextView)).setText(aCoffee.shop);
+
+		((EditText)findViewById(R.id.nameEditText)).setText(aCoffee.name);
+		((EditText)findViewById(R.id.shopEditText)).setText(aCoffee.shop);
+		((EditText)findViewById(R.id.priceEditText)).setText(""+aCoffee.price);
+		((RatingBar) findViewById(R.id.coffeeRatingBar)).setRating((float)aCoffee.rating);
+
+
 		favouriteImage = (ImageView) findViewById(R.id.favouriteImageView);
+
+		if (aCoffee.favourite == true) {
+			favouriteImage.setImageResource(R.drawable.ic_favourite_on);
+			isFavourite = true;
+		} else {
+			favouriteImage.setImageResource(R.drawable.ic_favourite_off);
+			isFavourite = false;
+		}
 	}
 
 	private Coffee getCoffeeObject(int id) {
@@ -72,5 +91,20 @@ public class Edit extends Base {
 		} else
 			toastMessage("You must Enter Something for Name and Shop");
 
+	}
+
+	public void toggle(View arg0) {
+
+		if (isFavourite) {
+			aCoffee.favourite = false;
+			toastMessage("Removed From Favourites");
+			isFavourite = false;
+			favouriteImage.setImageResource(R.drawable.ic_favourite_off);
+		} else {
+			aCoffee.favourite = true;
+			toastMessage("Added to Favourites !!");
+			isFavourite = true;
+			favouriteImage.setImageResource(R.drawable.ic_favourite_on);
+		}
 	}
 }
