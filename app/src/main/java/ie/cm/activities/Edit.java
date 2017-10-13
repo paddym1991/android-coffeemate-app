@@ -91,6 +91,8 @@ public class Edit extends Base {
 		} else
 			toastMessage("You must Enter Something for Name and Shop");
 
+		goToActivity(this, Home.class, activityInfo);
+
 	}
 
 	/**
