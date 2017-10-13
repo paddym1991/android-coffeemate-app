@@ -93,6 +93,10 @@ public class Edit extends Base {
 
 	}
 
+	/**
+	 * toggle favourites option on and off
+	 * @param arg0
+	 */
 	public void toggle(View arg0) {
 
 		if (isFavourite) {

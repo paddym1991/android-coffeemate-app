@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Coffee implements Serializable
 {
+	//set id
+	public static int autoid = 1;
 
 	public int coffeeId;
 	public String name;
@@ -17,6 +19,9 @@ public class Coffee implements Serializable
 
 	public Coffee(String name, String shop, double rating, double price, boolean fav)
 	{
+		//add an autoincrement number to act as a unique id
+		this.coffeeId = autoid++;
+
 		this.name = name;
 		this.shop = shop;
 		this.rating = rating;
