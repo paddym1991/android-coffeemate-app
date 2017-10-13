@@ -14,15 +14,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ActionMode;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
                                                                               //make sure the class implements the MultiChoiceModeListener interface
 public class CoffeeFragment  extends ListFragment implements  OnClickListener, AbsListView.MultiChoiceModeListener
-{ 
+{
   public         Base                activity;
   public static  CoffeeListAdapter 	listAdapter;
   public         ListView 			listView;
@@ -54,7 +57,18 @@ public class CoffeeFragment  extends ListFragment implements  OnClickListener, A
     listAdapter = new CoffeeListAdapter(getActivity(), this, Base.coffeeList);      //replaced 'activity' with the method 'getActivity()' in parameters because app didn't recognize 'activity'
     setListAdapter (listAdapter);
   }
-     
+
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
+    View v = super.onCreateView(inflater, parent, savedInstanceState);
+
+    listView = (ListView) v.findViewById(android.R.id.list);
+    listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+    listView.setMultiChoiceModeListener(this);
+
+    return v;
+  }
+
   @Override
   public void onStart()
   {
@@ -68,6 +82,12 @@ public class CoffeeFragment  extends ListFragment implements  OnClickListener, A
     {
       onCoffeeDelete ((Coffee) view.getTag());
     }
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    ((CoffeeListAdapter) getListAdapter()).notifyDataSetChanged();
   }
 
   @Override
@@ -161,4 +181,3 @@ public class CoffeeFragment  extends ListFragment implements  OnClickListener, A
 
 }
 
-  

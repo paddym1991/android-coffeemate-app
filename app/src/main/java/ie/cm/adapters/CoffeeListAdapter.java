@@ -45,6 +45,10 @@ public class CoffeeListAdapter extends ArrayAdapter<Coffee>
     return item.view;
   }
 
+  public List<Coffee> getCoffeeList() {
+    return this.coffeeList;
+  }
+
   @Override
   public int getCount()
   {
@@ -54,18 +58,18 @@ public class CoffeeListAdapter extends ArrayAdapter<Coffee>
   @Override
   public Coffee getItem(int position)
   {
-	  return null;
+	  return coffeeList.get(position);
   }
 
   @Override
   public long getItemId(int position)
   {
-    return 0;
+    return position;
   }
 
   @Override
   public int getPosition(Coffee c)
   {
-    return 0;
+    return coffeeList.indexOf(c);
   }
 }
